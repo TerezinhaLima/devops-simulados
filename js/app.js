@@ -154,11 +154,32 @@ function renderStats() {
       <p>Acertos: ${totalAcertos} / ${totalQuestoes} (${pctGeral}%)</p>
       <div class="bar"><div class="bar-fill" style="width:${pctGeral}%"></div></div>
     </div>
+
+    <div class="stat-card" style="border-left: 4px solid #ef4444">
+      <h3>⚠️ Zona de risco</h3>
+      <p>Apaga todo o seu progresso salvo no navegador.</p>
+      <button class="btn" id="reset-all" style="background:#ef4444;margin-top:.5rem">
+        🗑️ Zerar todas as estatísticas
+      </button>
+    </div>
   </div>`;
+
   container.innerHTML = html;
   grid.innerHTML = '';
-}
 
+  // Evento do botão zerar
+  const btnReset = document.getElementById('reset-all');
+  if (btnReset) {
+    btnReset.onclick = () => {
+      if (confirm('Tem certeza que deseja apagar TODO o seu progresso?\n\nEssa ação não pode ser desfeita.')) {
+        respostas = {};
+        localStorage.removeItem('devops_respostas');
+        renderStats();
+        alert('✅ Estatísticas zeradas com sucesso!');
+      }
+    };
+  }
+}
 // Tabs
 document.querySelectorAll('.tab').forEach(tab => {
   tab.onclick = () => {
