@@ -1,0 +1,349 @@
+const simulados = {
+  1: {
+    titulo: "Simulado 1 - DevOps Professional",
+    acertos: 10,
+    total: 40,
+    questoes: [
+      {
+        n: 1, correta: true, ref: "12737",
+        pergunta: "Com o objetivo de avaliar a otimização do Fluxo de Valor, qual indicador deve ser incluído em um bloco de processo no Mapa de Fluxo de Valor?",
+        opcoes: {
+          A: "Telemetria de aplicativos",
+          B: "Percentagem completa e precisa (%C/A)",
+          C: "Velocidade da equipe",
+          D: "Trabalho em andamento (WiP)"
+        },
+        resposta: "B",
+        justificativa: "Além do lead time e do tempo de processamento, a terceira métrica principal no fluxo de valor é a porcentagem de vezes que a tarefa foi concluída e com precisão – percent complete and accurate – %C/A."
+      },
+      {
+        n: 2, correta: false, ref: "12780",
+        pergunta: "O que é um exemplo de um requisito não funcional?",
+        opcoes: {
+          A: "Ter compatibilidade com versões anteriores e posteriores entre versões",
+          B: "Tornar possível relatar cronogramas atrasados",
+          C: "Registrar transações financeiras para um sistema de reservas de hotéis"
+        },
+        resposta: "A",
+        justificativa: "Exemplos de requisitos não funcionais incluem: telemetria de produção suficiente, capacidade de acompanhar dependências, serviços resilientes, compatibilidade entre versões, arquivamento de dados, busca em logs, rastreamento de solicitações, configuração centralizada com feature flags."
+      },
+      {
+        n: 3, correta: false, ref: "12782",
+        pergunta: "Quais são os dois elementos normalmente armazenados em um único repositório de código-fonte compartilhado? (1. Solicitações de mudança, 2. Ferramentas de pipeline de implantação, 3. Executáveis do programa compilado, 4. Tutoriais e Padrões)",
+        opcoes: { A: "1 e 2", B: "1 e 4", C: "2 e 3", D: "2 e 4" },
+        resposta: "D",
+        justificativa: "Colocamos no repositório compartilhado: padrões de configuração, ferramentas de implantação, padrões de teste e ferramentas, ferramentas de pipeline, ferramentas de monitoramento, tutoriais e padrões."
+      },
+      {
+        n: 4, correta: false, ref: "12787",
+        pergunta: "Qual não é um item de repositório de código-fonte compartilhado que suporte padrões de registro e criptografia?",
+        opcoes: {
+          A: "Bibliotecas de código e suas configurações recomendadas",
+          B: "Pacotes de implantação",
+          C: "Pacotes do sistema operacional (OS) e compilações",
+          D: "Ferramentas de gerenciamento de segurança (secrets)"
+        },
+        resposta: "B",
+        justificativa: "Incluímos bibliotecas pré-aprovadas, ferramentas de gerenciamento de segurança, pacotes de SO. Pacotes de implantação não fazem parte deste contexto específico."
+      },
+      {
+        n: 5, correta: false, ref: "12804",
+        pergunta: "Qual requisito de orientação de lançamento não está de acordo com a maneira de trabalhar do DevOps? (Defeitos, Monitoramento, Arquitetura, Alertas)",
+        opcoes: {
+          A: "Contagem e severidade do defeito",
+          B: "Cobertura de monitoramento",
+          C: "Arquitetura do sistema: O serviço está fortemente acoplado o suficiente para resolver uma alta taxa de incidentes na produção?",
+          D: "Tipo / frequência de alertas do pager"
+        },
+        resposta: "C",
+        justificativa: "A letra C é o oposto. O que se busca é: 'Arquitetura do sistema: O serviço é fracamente acoplado o suficiente para suportar uma alta taxa de alterações e implantações na produção?'"
+      },
+      {
+        n: 6, correta: false, ref: "12811",
+        pergunta: "O que mais deve ser incluído em um bom pedido de pull request? (Além de 'por que' e 'quem')",
+        opcoes: {
+          A: "As unidades de negócio impactadas pela correção",
+          B: "Os potenciais riscos e contramedidas da implementação da correção",
+          C: "O cronograma de liberação de suporte para implementar a correção"
+        },
+        resposta: "B",
+        justificativa: "Uma boa pull request inclui: por que, quem, e riscos potenciais e contramedidas ao implementar a correção."
+      },
+      {
+        n: 7, correta: false, ref: "12813",
+        pergunta: "Qual técnica de revisão resulta diretamente em uma diminuição nos erros de codificação?",
+        opcoes: { A: "Sobre o ombro", B: "Programação em pares", C: "Revisão por pares", D: "Revisão assistida por ferramenta" },
+        resposta: "B",
+        justificativa: "Estudo de 2001 mostrou que programadores em pares são 15% mais lentos, mas o código 'livre de erros' aumentou de 70% para 85%."
+      },
+      {
+        n: 8, correta: false, ref: "12815",
+        pergunta: "Qual técnica de revisão é usada quando um engenheiro é o 'driver' e o outro é o 'navegador'?",
+        opcoes: { A: "Sobre o ombro", B: "Programação em pares", C: "Telemetria", D: "Revisão assistida por ferramentas" },
+        resposta: "B",
+        justificativa: "Na programação em pares, um engenheiro é o driver (escreve código) e o outro é o navegador (revisa enquanto é executado)."
+      },
+      {
+        n: 9, correta: false, ref: "12883",
+        pergunta: "Por que os funcionários em forma de I são menos adequados para a DevOps?",
+        opcoes: {
+          A: "Eles são especialistas em poucas áreas",
+          B: "Eles são especialistas em apenas uma área",
+          C: "Eles possuem habilidades executivas comprovadas em poucas áreas",
+          D: "Eles focam apenas na infraestrutura"
+        },
+        resposta: "B",
+        justificativa: "I-SHAPE significa especialista com profunda especialização em uma área, mas poucas habilidades em outras. Criam gargalos rapidamente."
+      },
+      {
+        n: 10, correta: false, ref: "12884",
+        pergunta: "Qual o objetivo do Desenvolvimento Orientado por Hipóteses?",
+        opcoes: {
+          A: "Criar uma cultura de colaboração mais eficiente",
+          B: "Desenvolver experimentos de usuários com segurança e facilidade",
+          C: "Fornecer critérios para testar recursos em testes de aceitação"
+        },
+        resposta: "B",
+        justificativa: "Técnicas como desenvolvimento orientado por hipóteses e teste A/B permitem experimentos com segurança e facilidade, liberando criatividade e inovação."
+      },
+      // ... continue com as questões 11-40 do Simulado 1
+      {
+        n: 11, correta: false, ref: "12886",
+        pergunta: "Qual deveria ser o conselho do profissional DevOps para diminuir o número de incidentes?",
+        opcoes: {
+          A: "Criar um único repositório para todo o sistema",
+          B: "Permitir a criação sob demanda de ambientes de desenvolvimento, de testes e de produção",
+          C: "Fazer com que as infraestruturas sejam mais fáceis de reconstruir do que reformar",
+          D: "Modificar a definição de 'pronto' para incluir a execução em ambientes de produção"
+        },
+        resposta: "B",
+        justificativa: "Ao possibilitar que os desenvolvedores executem ambientes de produção em suas próprias estações de trabalho, criados sob demanda e auto-atendidos, eles podem testar seu código fornecendo feedback inicial."
+      },
+      {
+        n: 12, correta: true, ref: "12887",
+        pergunta: "Quais elementos estão faltando no repositório de controle de versões da ABC?",
+        opcoes: { A: "Configuração de arquivos cloud", B: "Criação de executáveis", C: "Banco de Dados", D: "Resultados de testes" },
+        resposta: "A",
+        justificativa: "Devem ser versionados: código, scripts de banco, ferramentas de criação de ambiente, arquivos de containers, testes, scripts de empacotamento, artefatos de projeto, arquivos de configuração da nuvem, scripts de infraestrutura."
+      },
+      {
+        n: 13, correta: true, ref: "12889",
+        pergunta: "Quais dessas é uma boa razão para começar com os Dias de Jogo (Game Days)?",
+        opcoes: {
+          A: "Ela dá uma oportunidade para a equipe simular e ensaiar os acidentes, dando-a uma chance de se preparar.",
+          B: "Ela ajuda o dono do produto a identificar os melhores recursos do produto baseando-se em simulações de diversos cenários.",
+          C: "Ela auxilia no recrutamento e seleção dos talentos certos ao fazer o candidato responder perguntas baseadas em diversos cenários"
+        },
+        resposta: "A",
+        justificativa: "O objetivo do Game Day é ajudar as equipes a simular falhas para que possam praticar e aprender."
+      },
+      {
+        n: 14, correta: false, ref: "12890",
+        pergunta: "Qual abordagem NÃO é recomendada para criar um ambiente para uma equipe DevOps?",
+        opcoes: {
+          A: "Construir um processo de criação automatizada de ambientes que começa do 'bare metal'",
+          B: "Copiar um ambiente virtual",
+          C: "Criar e configurar o ambiente manualmente",
+          D: "Usar ferramentas automatizadas de configuração do sistema operacional"
+        },
+        resposta: "C",
+        justificativa: "Em vez de criar e configurar manualmente, use automação: copiar ambiente virtualizado, usar IaC, ferramentas automatizadas de configuração de SO, montar a partir de imagens/containers, criar em nuvem."
+      },
+      {
+        n: 15, correta: true, ref: "12891",
+        pergunta: "Qual passo de orientação de lançamento faz a pergunta 'o aplicativo realmente funciona conforme projetado?'",
+        opcoes: { A: "Contagem e análise de gravidade de defeitos", B: "Monitoramento de cobertura", C: "Higiene de produção", D: "Arquitetura do sistema" },
+        resposta: "A",
+        justificativa: "Número de defeitos e severidade: O aplicativo realmente funciona conforme projetado?"
+      },
+      {
+        n: 16, correta: false, ref: "12893",
+        pergunta: "Qual passo do processo de pull request precisa ser modificado? (1. Criar branch, 2. Enviar branch globalmente, 3. Abrir PR, 4. Receber análises)",
+        opcoes: {
+          A: "Passo 1. Não é permitido usar branches em um processo de pull request",
+          B: "Passo 2. A submissão (commit) deve ser feito localmente primeiro, e não globalmente.",
+          C: "Passo 3. Uma requisição de push precisa ser aberta no lugar de uma requisição de pull.",
+          D: "Passo 4. Não é necessária uma análise, as outras empresas irão editar o código diretamente."
+        },
+        resposta: "B",
+        justificativa: "O engenheiro comita nesta branch local primeiro, enviando regularmente seu trabalho para a mesma branch nomeada no servidor."
+      },
+      {
+        n: 17, correta: false, ref: "12894",
+        pergunta: "Qual dessas frases sobre a telemetria da segurança de informação é correta?",
+        opcoes: {
+          A: "As ferramentas de telemetria para a segurança de informação precisam ser usadas exclusivamente pela InfoSec por conta da confidencialidade das informações",
+          B: "As ferramentas de telemetria para a segurança de informação precisam ser integradas com as ferramentas de telemetria das Operações",
+          C: "As ferramentas de telemetria para a segurança de informação precisam ser integradas com as ferramentas de telemetria da Garantia da Qualidade",
+          D: "As ferramentas de telemetria para a segurança de informação precisam ser as mesmas ferramentas de telemetria da Garantia de Qualidade, do Desenvolvimento e das Operações"
+        },
+        resposta: "D",
+        justificativa: "Devemos integrar a telemetria de segurança nas mesmas ferramentas que Desenvolvimento, QA e Operações estão usando."
+      },
+      {
+        n: 18, correta: true, ref: "12895",
+        pergunta: "O que é a análise estática?",
+        opcoes: {
+          A: "É um teste que é executado em um ambiente fora do seu tempo de execução...",
+          B: "É o teste que executa um programa enquanto ele está operando...",
+          C: "É um teste em que todos os desenvolvedores possuem sua própria chave PGP...",
+          D: "É quando dois desenvolvedores trabalham juntos no mesmo escritório..."
+        },
+        resposta: "A",
+        justificativa: "É um teste realizado em ambiente de não execução, idealmente no pipeline. Uma ferramenta inspeciona o código em busca de comportamentos em tempo de execução, falhas, backdoors (teste 'dentro para fora')."
+      },
+      {
+        n: 19, correta: false, ref: "12896",
+        pergunta: "Em qual parte da pirâmide ideal de testes deve-se investir mais?",
+        opcoes: { A: "Testes automatizados de Interface gráfica", B: "Testes automatizados de integração", C: "Testes automatizados unitários", D: "Testes manuais" },
+        resposta: "C",
+        justificativa: "Martin Fowler descreveu a 'pirâmide de testes ideal', onde capturamos a maioria dos erros com testes de unidade. São mais baratos e rápidos."
+      },
+      {
+        n: 20, correta: false, ref: "12900",
+        pergunta: "Qual abordagem o profissional de DevOps deve sugerir para saber quais recursos são melhores?",
+        opcoes: { A: "Liberação Blue/green", B: "Liberação canária", C: "Alternância de recursos", D: "Revisão de Prontidão para o Lançamento (LRR) e Revisão de Prontidão de Transferência (HRR)" },
+        resposta: "C",
+        justificativa: "Feature toggles permitem testes A/B ao controlar quais recursos estão visíveis para segmentos específicos de usuários."
+      },
+      {
+        n: 21, correta: true, ref: "12901",
+        pergunta: "Qual abordagem seria melhor para criar resistência em uma nuvem de aplicativos dinâmicos?",
+        opcoes: {
+          A: "Definir os modos de falhas, inserir falhas na nuvem de sua aplicação e ensaiar para grandes falhas",
+          B: "Documentar um plano detalhado de gerenciamento de disponibilidade...",
+          C: "Documentar um plano detalhado de continuidade empresarial...",
+          D: "Configurar um site de recuperação de desastre em backup espelhado..."
+        },
+        resposta: "A",
+        justificativa: "A resiliência exige que definamos nossos modos de falha e façamos testes para garantir que funcionem. Injetamos falhas em produção e praticamos falhas em grande escala."
+      },
+      {
+        n: 22, correta: false, ref: "12902",
+        pergunta: "De que forma um radiador de informações fornece acesso automático para a telemetria?",
+        opcoes: {
+          A: "Uma exibição privada que permite que as pessoas autorizadas vejam...",
+          B: "Uma exibição auto personalizada que mostra medidas diferentes para cada membro...",
+          C: "Uma exibição que mostra como os serviços estão sendo desempenhados para todos os membros da equipe e para visitantes",
+          D: "Uma exibição que mostre como os membros de uma equipe está trabalhando para todos os funcionários da empresa"
+        },
+        resposta: "C",
+        justificativa: "Colocamos a telemetria em áreas centrais onde Desenvolvimento e Operações funcionam, permitindo que todos os interessados vejam o desempenho dos serviços."
+      },
+      {
+        n: 23, correta: false, ref: "12903",
+        pergunta: "Qual dos Monkeys pode encontrar e desligar as instâncias AWS que não estejam funcionando da melhor maneira?",
+        opcoes: { A: "Chaos Monkey", B: "Conformity Monkey", C: "Janitor Monkey", D: "Latency Monkey" },
+        resposta: "B",
+        justificativa: "Conformity Monkey = Localiza e desliga instâncias da AWS que não seguem as práticas recomendadas."
+      },
+      {
+        n: 24, correta: true, ref: "12904",
+        pergunta: "Qual a melhor forma de garantir conformidade no processo de gerenciamento de mudanças?",
+        opcoes: {
+          A: "Categorizar a maioria das mudanças de alto-risco como mudanças de níveis baixos / médios",
+          B: "Categorizar a maioria das mudanças de baixo-risco como mudanças de níveis médios",
+          C: "A equipe DevOps deve autorizar todas as mudanças",
+          D: "A equipe DevOps não deve autorizar nenhuma mudança"
+        },
+        resposta: "B",
+        justificativa: "Devemos obter acordo das Operações e autoridades de mudança de que nossas mudanças demonstraram ser de baixo risco o suficiente para serem definidas como mudanças padrão, pré-aprovadas pelo CAB."
+      },
+      {
+        n: 25, correta: true, ref: "12905",
+        pergunta: "Qual técnica ajuda as Operações a automatizar a criação e configuração do ambiente?",
+        opcoes: { A: "Infraestrutura como código", B: "Sistema Obeva", C: "Solicitações de mudança padrão", D: "Desenvolvimento guiado por teses" },
+        resposta: "A",
+        justificativa: "Na infraestrutura como código, o trabalho de Operações é automatizado e tratado como código de aplicativo."
+      },
+      {
+        n: 26, correta: false, ref: "12906",
+        pergunta: "O que funcionários de alto desempenho fazem diferente ao diagnosticar e corrigir problemas?",
+        opcoes: {
+          A: "Eles agrupam as mudanças de produção para que todo o impacto seja realizado em um só dia.",
+          B: "Eles agendam resets regulares em seus servidores de produção",
+          C: "Eles usam equipes de especialistas dedicados para analisar a raiz dos problemas",
+          D: "Eles usam uma abordagem disciplinada e com apoio da telemetria"
+        },
+        resposta: "D",
+        justificativa: "Empresas de alto desempenho usam uma abordagem disciplinada para resolver problemas, usando a telemetria de produção."
+      },
+      {
+        n: 27, correta: false, ref: "12907",
+        pergunta: "Quais são dois exemplos de requisitos não funcionais? (1. Compatibilidade entre versões, 2. Pesquisar logs, 3. Aprimoramentos na UI)",
+        opcoes: { A: "1 and 2", B: "1 and 3", C: "2 and 3" },
+        resposta: "A",
+        justificativa: "Requisitos não funcionais incluem: telemetria, dependências, resiliência, compatibilidade, busca em logs, rastreamento, feature flags."
+      },
+      {
+        n: 28, correta: false, ref: "12908",
+        pergunta: "Qual é o nome da técnica que tem as vantagens: todo mundo vê tudo, novos engenheiros veem o trabalho diário, pessoas pedem ajuda, aprendizagem organizacional?",
+        opcoes: {
+          A: "Processo padrão automatizado",
+          B: "Criação de um único código-fonte a ser compartilhado no repositório",
+          C: "Propagação de conhecimento através de testes automáticos",
+          D: "Uso de salas de bate papo e bots de bate papo"
+        },
+        resposta: "D",
+        justificativa: "Tendo trabalhos realizados por automação na sala de chat, há inúmeros benefícios: todos veem o que acontece, novos engenheiros veem o trabalho diário, pessoas pedem ajuda, aprendizado organizacional."
+      },
+      {
+        n: 29, correta: false, ref: "12909",
+        pergunta: "Qual passo precisa ser ajustado no plano de melhoria das reuniões pós-morte sem culpa? (4 passos)",
+        opcoes: { A: "Passo 1", B: "Passo 2", C: "Passo 3", D: "Passo 4" },
+        resposta: "D",
+        justificativa: "O correto deveria ser: '4. Aceite que exista sempre um espaço onde humanos podem decidir tomar ação ou não, e que o julgamento dessas decisões se baseia em retrospectiva'."
+      },
+      {
+        n: 30, correta: false, ref: "12910",
+        pergunta: "Qual técnica deve ser aplicada para restaurar rapidamente a prestação de serviços com a menor consequência possível?",
+        opcoes: {
+          A: "Voltar à versão anterior usando a alternância de recursos",
+          B: "Começar a usar liberação canária",
+          C: "Desligar o recurso falho com a alternância de recursos",
+          D: "Usar fix forward através da criação de um código para consertar o defeito"
+        },
+        resposta: "C",
+        justificativa: "Feature toggle nos permite fazer rollback facilmente. Recursos que criam problemas podem ser desativados simplesmente mudando a configuração da feature toggle."
+      },
+      {
+        n: 31, correta: false, ref: "12911",
+        pergunta: "Foi tomada uma decisão que diminuiu o tamanho do lote de trabalho em equipe de DevOps. Qual consequência resultou?",
+        opcoes: { A: "Atraso no feedback", B: "Testes de desempenho adiados", C: "Aumento na refatoração", D: "Aumento do retrabalho" },
+        resposta: "C",
+        justificativa: "Quando os lotes de trabalho são menores, tendemos a fazer refatorações mais frequentes, melhorando a qualidade do código continuamente."
+      },
+      {
+        n: 32, correta: false, ref: "12912",
+        pergunta: "Para qual problema típico de Operações pode ser usado a história dos usuários?",
+        opcoes: {
+          A: "Tarefas não repetitivas que são desempenhadas de forma automática",
+          B: "Tarefas não repetitivas que só podem ser usadas em um projeto",
+          C: "Tarefas repetitivas que são desempenhadas de forma automática",
+          D: "Tarefas repetitivas que são desempenhadas manualmente"
+        },
+        resposta: "D",
+        justificativa: "Criamos 'histórias de usuário de Ops' bem definidas que representam atividades de trabalho que podem ser reutilizadas em todos os projetos."
+      },
+      {
+        n: 33, correta: false, ref: "12914",
+        pergunta: "O que é um padrão de lançamento baseado na aplicação?",
+        opcoes: { A: "Implantação Azul-verde", B: "Liberação canária", C: "Dark launches", D: "Builds verdes" },
+        resposta: "C",
+        justificativa: "Dark launching é implantar toda a funcionalidade em produção e testá-la com tráfego de produção antes do lançamento real."
+      },
+      {
+        n: 34, correta: false, ref: "12915",
+        pergunta: "Qual a melhor técnica de revisão para novos funcionários juniores sem experiência?",
+        opcoes: { A: "Troca de emails", B: "Sobre o ombro", C: "Programação em pares", D: "Auxílio de ferramentas" },
+        resposta: "C",
+        justificativa: "A programação em pares é quando dois engenheiros trabalham juntos na mesma estação de trabalho."
+      },
+      {
+        n: 35, correta: true, ref: "12916",
+        pergunta: "Qual aplicação da LRR e HRR será eficiente para conquistar o objetivo de responsabilizar desenvolvedores?",
+        opcoes: {
+          A: "Permite que os clientes usem o serviço diretamente após a LRR e a equipe de Desenvolvedores presta suporte",
+          B: "Permite que os clientes usem o serviço diretamente após a LRR e a equipe de Operações presta suporte",
+          C: "Permite que os clientes usem o serviço diretamente após a HRR e a equipe de Desenvolvedores presta suporte",
+          D: "Os clientes só podem
