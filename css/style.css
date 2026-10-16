@@ -1,0 +1,186 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f4f6fa;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+header h1 { font-size: 1.8rem; }
+.subtitle { opacity: .9; margin-top: .5rem; }
+
+.tabs {
+  display: flex;
+  gap: .5rem;
+  padding: 1rem;
+  background: #fff;
+  border-bottom: 2px solid #e5e7eb;
+  overflow-x: auto;
+}
+.tab {
+  padding: .6rem 1.2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all .2s;
+}
+.tab:hover { background: #eff6ff; }
+.tab.active {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  max-width: 1300px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+#quiz-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  min-height: 400px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.q-number { font-weight: 700; color: #3b82f6; }
+.ref { font-size: .8rem; color: #6b7280; }
+.badge {
+  padding: .3rem .8rem;
+  border-radius: 20px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.badge.correct { background: #d1fae5; color: #065f46; }
+.badge.wrong { background: #fee2e2; color: #991b1b; }
+
+.question-text {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.options { list-style: none; margin-bottom: 1rem; }
+.options li {
+  padding: .8rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: .6rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+.options li:hover { border-color: #3b82f6; background: #f8fafc; }
+.options li.correct { border-color: #10b981; background: #ecfdf5; }
+.options li.wrong { border-color: #ef4444; background: #fef2f2; }
+.options li.selected { border-color: #3b82f6; background: #eff6ff; }
+
+.justificativa {
+  background: #f9fafb;
+  border-left: 4px solid #3b82f6;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  font-size: .95rem;
+}
+.justificativa h4 { color: #1e40af; margin-bottom: .5rem; }
+
+.actions {
+  display: flex;
+  gap: .5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+button.btn {
+  padding: .6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  background: #3b82f6;
+  color: #fff;
+  transition: background .2s;
+}
+button.btn:hover { background: #2563eb; }
+button.btn.secondary { background: #e5e7eb; color: #1f2937; }
+button.btn.secondary:hover { background: #d1d5db; }
+
+#sidebar {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  height: fit-content;
+  position: sticky;
+  top: 1rem;
+}
+#question-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .4rem;
+  margin-top: .8rem;
+}
+.q-dot {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+}
+.q-dot.correct { background: #d1fae5; color: #065f46; border-color: #10b981; }
+.q-dot.wrong { background: #fee2e2; color: #991b1b; border-color: #ef4444; }
+.q-dot.current { outline: 3px solid #3b82f6; }
+
+.stats { padding: 1rem; }
+.stats h2 { color: #1e40af; margin-bottom: 1rem; }
+.stat-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+.stat-card h3 { color: #3b82f6; margin-bottom: .5rem; }
+.bar {
+  height: 20px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #3b82f6);
+  transition: width .5s;
+}
+
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; }
+  #sidebar { position: static; }
+}
