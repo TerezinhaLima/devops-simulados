@@ -10,8 +10,11 @@ function carregarRespostas() {
   try {
     const salvo = localStorage.getItem('devops_respostas');
     if (salvo) respostas = JSON.parse(salvo);
-  } catch(e) { respostas = {}; }
+  } catch (e) {
+    respostas = {};
+  }
 }
+
 function salvarRespostas() {
   localStorage.setItem('devops_respostas', JSON.stringify(respostas));
 }
@@ -19,6 +22,7 @@ function salvarRespostas() {
 function getResposta(sim, n) {
   return respostas[sim]?.[n];
 }
+
 function setResposta(sim, n, letra) {
   if (!respostas[sim]) respostas[sim] = {};
   respostas[sim][n] = letra;
@@ -32,6 +36,7 @@ function renderQuestao() {
 
   const respostaUsuario = getResposta(simuladoAtual, q.n);
   const respondida = respostaUsuario !== undefined;
+  const acertou = respondida && respostaUsuario === q.resposta;
 
   let opcoesHTML = '';
   for (const [letra, texto] of Object.entries(q.opcoes)) {
@@ -45,13 +50,18 @@ function renderQuestao() {
     </li>`;
   }
 
+  // Badge só aparece depois de responder
+  const badgeHTML = respondida
+    ? `<span class="badge ${acertou ? 'correct' : 'wrong'}">
+         ${acertou ? '✔ Você acertou' : '✘ Você errou'}
+       </span>`
+    : '';
+
   container.innerHTML = `
     <div class="question-header">
       <span class="q-number">Questão ${q.n} de ${sim.questoes.length}</span>
       <span class="ref">Ref: ${q.ref}</span>
-      <span class="badge ${q.correta ? 'correct' : 'wrong'}">
-        ${q.correta ? '✔ Você acertou' : '✘ Você errou'}
-      </span>
+      ${badgeHTML}
     </div>
     <div class="question-text">${q.pergunta}</div>
     <ul class="options">${opcoesHTML}</ul>
@@ -81,18 +91,30 @@ function renderQuestao() {
   });
 
   document.getElementById('prev').onclick = () => {
-    if (questaoAtual > 0) { questaoAtual--; renderQuestao(); renderGrid(); }
+    if (questaoAtual > 0) {
+      questaoAtual--;
+      renderQuestao();
+      renderGrid();
+    }
   };
+
   document.getElementById('next').onclick = () => {
-    if (questaoAtual < sim.questoes.length - 1) { questaoAtual++; renderQuestao(); renderGrid(); }
+    if (questaoAtual < sim.questoes.length - 1) {
+      questaoAtual++;
+      renderQuestao();
+      renderGrid();
+    }
   };
+
   const resetBtn = document.getElementById('reset');
-  if (resetBtn) resetBtn.onclick = () => {
-    if (respostas[simuladoAtual]) delete respostas[simuladoAtual][q.n];
-    salvarRespostas();
-    renderQuestao();
-    renderGrid();
-  };
+  if (resetBtn) {
+    resetBtn.onclick = () => {
+      if (respostas[simuladoAtual]) delete respostas[simuladoAtual][q.n];
+      salvarRespostas();
+      renderQuestao();
+      renderGrid();
+    };
+  }
 }
 
 function renderGrid() {
@@ -118,12 +140,15 @@ function renderGrid() {
 
 function renderStats() {
   let html = '<div class="stats"><h2>📊 Estatísticas Gerais</h2>';
-  let totalAcertos = 0, totalQuestoes = 0;
+  let totalAcertos = 0;
+  let totalRespondidas = 0;
+  let totalQuestoes = 0;
 
   for (const simId in simulados) {
     const sim = simulados[simId];
     const respostasSim = respostas[simId] || {};
-    let acertos = 0, respondidas = 0;
+    let acertos = 0;
+    let respondidas = 0;
 
     sim.questoes.forEach(q => {
       const r = respostasSim[q.n];
@@ -134,6 +159,7 @@ function renderStats() {
     });
 
     totalAcertos += acertos;
+    totalRespondidas += respondidas;
     totalQuestoes += sim.questoes.length;
     const pct = respondidas ? Math.round((acertos / respondidas) * 100) : 0;
 
@@ -143,23 +169,29 @@ function renderStats() {
         <p>Respondidas: ${respondidas}/${sim.questoes.length}</p>
         <p>Acertos: ${acertos} (${pct}%)</p>
         <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+        <button class="btn secondary reset-sim" data-sim="${simId}"
+                style="margin-top:.6rem;font-size:.85rem">
+          🔄 Zerar este simulado
+        </button>
       </div>
     `;
   }
 
-  const pctGeral = totalQuestoes ? Math.round((totalAcertos / totalQuestoes) * 100) : 0;
+  const pctGeral = totalRespondidas ? Math.round((totalAcertos / totalRespondidas) * 100) : 0;
   html += `
     <div class="stat-card" style="border-left: 4px solid #3b82f6">
       <h3>🎯 Total Geral</h3>
-      <p>Acertos: ${totalAcertos} / ${totalQuestoes} (${pctGeral}%)</p>
+      <p>Respondidas: ${totalRespondidas} / ${totalQuestoes}</p>
+      <p>Acertos: ${totalAcertos} (${pctGeral}%)</p>
       <div class="bar"><div class="bar-fill" style="width:${pctGeral}%"></div></div>
     </div>
 
     <div class="stat-card" style="border-left: 4px solid #ef4444">
-      <h3>⚠️ Zona de risco</h3>
-      <p>Apaga todo o seu progresso salvo no navegador.</p>
-      <button class="btn" id="reset-all" style="background:#ef4444;margin-top:.5rem">
-        🗑️ Zerar todas as estatísticas
+      <h3>⚠️ Zona de Perigo</h3>
+      <p style="font-size:.9rem;color:#6b7280">Apaga todo o progresso salvo no navegador.</p>
+      <button class="btn" id="reset-all"
+              style="background:#ef4444;margin-top:.5rem">
+        🗑️ Zerar TODAS as estatísticas
       </button>
     </div>
   </div>`;
@@ -167,10 +199,10 @@ function renderStats() {
   container.innerHTML = html;
   grid.innerHTML = '';
 
-  // Evento do botão zerar
-  const btnReset = document.getElementById('reset-all');
-  if (btnReset) {
-    btnReset.onclick = () => {
+  // Botão: zerar TODAS
+  const btnResetAll = document.getElementById('reset-all');
+  if (btnResetAll) {
+    btnResetAll.onclick = () => {
       if (confirm('Tem certeza que deseja apagar TODO o seu progresso?\n\nEssa ação não pode ser desfeita.')) {
         respostas = {};
         localStorage.removeItem('devops_respostas');
@@ -179,7 +211,20 @@ function renderStats() {
       }
     };
   }
+
+  // Botões: zerar um simulado específico
+  document.querySelectorAll('.reset-sim').forEach(btn => {
+    btn.onclick = () => {
+      const simId = btn.dataset.sim;
+      if (confirm(`Zerar o progresso do ${simulados[simId].titulo}?`)) {
+        if (respostas[simId]) delete respostas[simId];
+        salvarRespostas();
+        renderStats();
+      }
+    };
+  });
 }
+
 // Tabs
 document.querySelectorAll('.tab').forEach(tab => {
   tab.onclick = () => {
