@@ -145,7 +145,7 @@ const simulados = {
       { n: 24, correta: true, ref: "12904",
         pergunta: "Qual a melhor forma de garantir conformidade no processo de gerenciamento de mudanças?",
         opcoes: { A: "Categorizar a maioria das mudanças de alto-risco como mudanças de níveis baixos / médios", B: "Categorizar a maioria das mudanças de baixo-risco como mudanças de níveis médios", C: "A equipe DevOps deve autorizar todas as mudanças", D: "A equipe DevOps não deve autorizar nenhuma mudança" },
-        resposta: "B",
+        resposta: "A",
         justificativa: "Devemos obter acordo das Operações e autoridades de mudança de que nossas mudanças demonstraram ser de baixo risco o suficiente para serem definidas como mudanças padrão, pré-aprovadas pelo CAB." },
 
       { n: 25, correta: true, ref: "12905",
